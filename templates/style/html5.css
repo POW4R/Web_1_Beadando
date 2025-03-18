@@ -13,6 +13,12 @@ h1 {
     margin: 0;
 }
 
+nav ul li a:hover,
+nav ul li a.active {
+    background: #007bff;
+    border-radius: 5px;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
