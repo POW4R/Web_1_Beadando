@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML5 Menü</title>
+    <script src="scripts/html5.js" defer></script>
+    <link rel="stylesheet" href="style/html5.css">
 </head>
+
 <body>
-    
+    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="html5.html">HTML5 API-k</a></li>
+            <li><a href="chart.html">Chart.js</a></li>
+        </ul>
+    </nav>
+
+    <section id="storage">
+        <h2>Web Storage</h2>
+        <button onclick="saveData()">Mentés</button>
+        <button onclick="loadData()">Betöltés</button>
+    </section>
+
+    <section id="workers">
+        <h2>Web Workers</h2>
+        <button onclick="startWorker()">Munkás indítása</button>
+        <p id="workerOutput"></p>
+    </section>
+
+    <section id="sse">
+        <h2>Server-Sent Events</h2>
+        <p id="sseOutput">Várakozás szerver üzenetre...</p>
+    </section>
+
+    <section id="geo">
+        <h2>Geolocation API</h2>
+        <button onclick="getLocation()">Helyzet lekérése</button>
+        <p id="locationOutput"></p>
+    </section>
+
+    <section id="dragdrop">
+        <h2>Drag and Drop API</h2>
+        <div id="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)">Dobd ide!</div>
+        <img src="https://via.placeholder.com/50" draggable="true" ondragstart="drag(event)" id="dragItem">
+    </section>
+
+    <section id="canvas">
+        <h2>Canvas</h2>
+        <canvas id="myCanvas" width="200" height="100"></canvas>
+    </section>
+
+    <section id="svg">
+        <h2>SVG</h2>
+        <svg>
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        </svg>
+    </section>
+
+    <footer>
+        <p>Neptun kód 1: VBVYRO</p>
+        <p>Neptun kód 2: LZJIAQ</p>
+    </footer>
 </body>
+
 </html>
