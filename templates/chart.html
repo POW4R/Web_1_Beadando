@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chart</title>
+    <link rel="stylesheet" href="style/chart.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="table.html">Táblázat (CRUD)</a></li>
+            <li><a href="html5.html">HTML5 API</a></li>
+            <li><a href="chart.html" class="active">Chart</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Vonaldiagram egy táblázat adatai alapján</h2>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Év</th>
+                    <th>Adat 1</th>
+                    <th>Adat 2</th>
+                    <th>Adat 3</th>
+                    <th>Adat 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="drawChart(this)">
+                    <td>2020</td><td>10</td><td>20</td><td>30</td><td>40</td>
+                </tr>
+                <tr onclick="drawChart(this)">
+                    <td>2021</td><td>15</td><td>25</td><td>35</td><td>45</td>
+                </tr>
+                <tr onclick="drawChart(this)">
+                    <td>2022</td><td>20</td><td>30</td><td>40</td><td>50</td>
+                </tr>
+                <tr onclick="drawChart(this)">
+                    <td>2023</td><td>25</td><td>35</td><td>45</td><td>55</td>
+                </tr>
+                <tr onclick="drawChart(this)">
+                    <td>2024</td><td>30</td><td>40</td><td>50</td><td>60</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <canvas id="chartCanvas"></canvas>
+    </main>
+    <footer>
+        <p>Neptun kód 1: VBVYRO</p>
+        <p>Neptun kód 2: LZJIAQ</p>
+    </footer>
+    <script src="scripts/chart.js"></script>
 </body>
 </html>
