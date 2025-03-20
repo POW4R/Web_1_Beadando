@@ -40,7 +40,7 @@
     </nav>
     <div id="readDiv"></div>
     <h1>Create</h1>
-    <div>
+    <div id="createDiv">
         <h2>Create New Record</h2>
         <label for="new-value">Value:</label>
         <input type="text" id="new-value" maxlength="30"><br>
@@ -50,8 +50,13 @@
         <p id="createResult"></p>
     </div>
 
-    <div>
-        <h2>Update Result</h2>
+    <div id="updateDiv">
+        <h2>Update</h2>
+        ID (required): <input id="idUpd" type="text"></input><br> 
+        <button type="submit" onclick="getDataForId();">getDataForId</button><br>
+        Value (required, max 30): <input id="name2" type="text"></input><br>
+        Height: <input id="city2" type="text"></input><br>
+        <button type="submit" onclick="update();">Update</button><br>
         <p id="updateResult"></p>
     </div>
 

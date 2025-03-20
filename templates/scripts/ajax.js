@@ -29,24 +29,51 @@ async function read() {
 }
 
 async function create() {
-    let value = document.getElementById("new-value").value;
-    let height = document.getElementById("new-height").value;
+    value = document.getElementById("new-value").value;
+    height = document.getElementById("new-height").value;
     if (value.length > 0 && value.length <= 30 && height.length > 0) {
         let response = await fetch(url, {
             method: 'post',
             cache: 'no-cache',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: "code="+code+"&op=create&value="+value+"&height="+height
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded' 
+            },
+            body: "&op=create&value="+value+"&height="+height
         });
         let data = await response.text();
-        document.getElementById("createResult").innerHTML = data > 0 ? "Create successful!" : "Create NOT successful!";
-        document.getElementById("new-value").value = "";
-        document.getElementById("new-height").value = "";
+        if (data>0) {
+            str="Create successfull."
+        }
+        else {
+            str="Create was NOT successfull."
+        }
+        document.getElementById("createResult").innerHTML=str;
+        document.getElementById("new-value").value="";
+        document.getElementById("new-height").value="";
         read();
     } else {
         document.getElementById("createResult").innerHTML = "Validation error!!";
     }
 }
+async function getDataForId() {
+    let response = await fetch(url, {
+        method: 'post',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: "code="+code+"&op=read"
+    });
+    let data = await response.text();
+    data = JSON.parse(data);
+    let list = data.list;
+    for(let i=0; i<list.length; i++)
+      if(list[i].id==document.getElementById("idUpd").value){
+        document.getElementById("name2").value=list[i].name;
+        document.getElementById("city2").value=list[i].city;
+        document.getElementById("phone2").value=list[i].phone;
+      }
+  }
 
 async function updateData(id) {
     let row = event.target.parentElement.parentElement;
