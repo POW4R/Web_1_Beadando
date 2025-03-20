@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src="scripts/ajax.js" defer></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chart.html">Chart</a></li>
+            <li><a href="ajax.html">Ajax</a></li>
+        </ul>
+    </nav>
+    <div id="readDiv"></div>
+    <h1>Create</h1>
+    <div>
+        <h2>Create New Record</h2>
+        <label for="new-value">Value:</label>
+        <input type="text" id="new-value" maxlength="30"><br>
+        <label for="new-height">Height:</label>
+        <input type="number" id="new-height"><br>
+        <button id="createEntry" >Create</button>
+        <p id="createResult"></p>
+    </div>
+
+    <div>
+        <h2>Update Result</h2>
+        <p id="updateResult"></p>
+    </div>
+
+    <div>
+        <h2>Delete Result</h2>
+        <p id="deleteResult"></p>
+    </div>
+
+</body>
+</html>
