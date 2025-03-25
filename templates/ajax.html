@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajax</title>
+    <title>Ajax Table</title>
     <script src="scripts/ajax.js" defer></script>
     <style>
         table {
@@ -25,6 +25,7 @@
         button {
             padding: 5px 10px;
             margin: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -38,7 +39,9 @@
             <li><a href="ajax.html">Ajax</a></li>
         </ul>
     </nav>
+    
     <div id="readDiv"></div>
+    
     <h1>Create</h1>
     <div id="createDiv">
         <h2>Create New Record</h2>
@@ -46,24 +49,28 @@
         <input type="text" id="new-value" maxlength="30"><br>
         <label for="new-height">Height:</label>
         <input type="number" id="new-height"><br>
-        <button id="createEntry" >Create</button>
+        <button id="createEntry">Create</button>
         <p id="createResult"></p>
     </div>
 
+    <h1>Update</h1>
     <div id="updateDiv">
-        <h2>Update</h2>
-        ID (required): <input id="idUpd" type="text"></input><br> 
-        <button type="submit" onclick="getDataForId();">getDataForId</button><br>
-        Value (required, max 30): <input id="name2" type="text"></input><br>
-        Height: <input id="city2" type="text"></input><br>
-        <button type="submit" onclick="update();">Update</button><br>
+        <h2>Update Record</h2>
+        <label for="idUpd">ID (required):</label>
+        <input type="text" id="idUpd"><br>
+        <button onclick="getDataForId();">Get Data</button><br>
+        <label for="name2">Value (max 30):</label>
+        <input type="text" id="name2"><br>
+        <label for="city2">Height:</label>
+        <input type="text" id="city2"><br>
+        <button onclick="update();">Update</button>
         <p id="updateResult"></p>
     </div>
 
-    <div>
+    <h1>Delete</h1>
+    <div id="deleteDiv">
         <h2>Delete Result</h2>
         <p id="deleteResult"></p>
     </div>
-
 </body>
 </html>

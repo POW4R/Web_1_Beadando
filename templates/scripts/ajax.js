@@ -65,8 +65,12 @@ async function updateData(id, button) {
             body: `code=${code}&op=update&id=${id}&value=${value}&height=${height}`
         });
         let data = await response.text();
-        document.getElementById("updateResult").innerHTML = data > 0 ? "Update successful!" : "Update NOT successful!";
-        read();
+        if (data > 0) {
+            document.getElementById("updateResult").innerHTML = "Update successful!";
+            read();
+        } else {
+            document.getElementById("updateResult").innerHTML = "Update NOT successful!";
+        }
     } else {
         document.getElementById("updateResult").innerHTML = "Validation error!!";
     }
@@ -95,7 +99,7 @@ async function getDataForId() {
     let data = await response.json();
     let item = data.list.find(entry => entry.id == id);
     if (item) {
-        document.getElementById("new-value").value = item.value;
-        document.getElementById("new-height").value = item.height;
+        document.getElementById("name2").value = item.value;
+        document.getElementById("city2").value = item.height;
     }
 }
