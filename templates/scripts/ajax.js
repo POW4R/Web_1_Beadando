@@ -99,7 +99,7 @@ async function getDataForId() {
     let data = await response.json();
     let item = data.list.find(entry => entry.id == id);
     if (item) {
-        document.getElementById("name2").value = item.value;
-        document.getElementById("city2").value = item.height;
+        document.getElementById("value").value = item.value;
+        document.getElementById("height").value = item.height;
     }
 }
