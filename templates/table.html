@@ -1,11 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bootstrap CRUD Táblázat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/index.css">
 </head>
+
 <body>
-    
+    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="table.html" class="active">Táblázat</a></li>
+            <li><a href="html5.html">HTML5 API-k</a></li>
+            <li><a href="chart.html">Chart.js</a></li>
+            <li><a href="ajax.html">Ajax</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">CRUD Táblázat</h2>
+        <button class="btn btn-primary mb-3" onclick="addRow()">Új hozzáadása</button>
+
+        <!-- Keresés mező és gomb egymás mellett -->
+        <div class="d-flex mb-2">
+            <input type="text" id="searchInput" placeholder="Keresés..." class="form-control me-2">
+            <button onclick="searchTable()" class="btn btn-primary">Keresés</button>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Email</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        let rowCount = 0;
+
+        function addRow() {
+            rowCount++;
+            const tableBody = document.getElementById("table-body");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${rowCount}</td>
+            <td contenteditable="true" oninput="validateInput(this)">Név</td>
+            <td contenteditable="true" oninput="validateEmail(this)">email@example.com</td>
+            <td>
+                <button class="btn btn-success" onclick="editRow(this)">Mentés</button>
+                <button class="btn btn-danger" onclick="deleteRow(this)">Törlés</button>
+            </td>
+        `;
+            tableBody.appendChild(row);
+        }
+
+        function deleteRow(button) {
+            button.parentElement.parentElement.remove();
+        }
+
+        function editRow(button) {
+            const row = button.parentElement.parentElement;
+            const nameCell = row.cells[1];
+            const emailCell = row.cells[2];
+
+            if (nameCell.innerText.trim() === "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailCell.innerText.trim())) {
+                alert("Hibás adatok! Kérlek, ellenőrizd a mezőket.");
+                return;
+            }
+
+            alert("Adatok mentve: " + nameCell.innerText + ", " + emailCell.innerText);
+        }
+
+        function validateInput(cell) {
+            const cellValue = cell.innerText.trim();
+
+            // Ellenőrzés, hogy üres-e
+            if (cellValue === "") {
+                cell.style.border = "2px solid red";
+            }
+            // Ellenőrzés, hogy tartalmaz-e számot
+            else if (/\d/.test(cellValue)) {
+                cell.style.border = "2px solid red";
+            } else {
+                cell.style.border = "";
+            }
+        }
+
+        function validateEmail(cell) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(cell.innerText.trim())) {
+                cell.style.border = "2px solid red";
+            } else {
+                cell.style.border = "";
+            }
+        }
+        function sortTable(columnIndex) {
+            const table = document.querySelector(".table");
+            const tbody = table.querySelector("tbody");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            // Check if the column is numeric
+            const isNumeric = !isNaN(rows[0].cells[columnIndex].innerText.trim());
+
+            rows.sort((a, b) => {
+                const aText = a.cells[columnIndex].innerText.trim();
+                const bText = b.cells[columnIndex].innerText.trim();
+
+                if (isNumeric) {
+                    return parseFloat(aText) - parseFloat(bText);
+                } else {
+                    return aText.localeCompare(bText);
+                }
+            });
+
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
+        }
+        function searchTable() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const table = document.querySelector('.table');
+            const rows = table.querySelectorAll('tbody tr'); // csak a tbody-ban lévő sorokat vizsgáljuk
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                let isMatch = false;
+
+                cells.forEach(cell => {
+                    if (cell.innerText.toLowerCase().includes(input)) {
+                        isMatch = true;
+                    }
+                });
+
+                // Ha van találat, mutatjuk a sort, különben elrejtjük
+                row.style.display = isMatch ? '' : 'none';
+            });
+        }
+
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("th").forEach((th, index) => {
+                th.style.cursor = "pointer";
+                th.addEventListener("click", () => sortTable(index));
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
