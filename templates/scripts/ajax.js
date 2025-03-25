@@ -1,92 +1,68 @@
-code="AAAAAAabc123";
-url="http://gamf.nhely.hu/ajax1/";
+const code = "AAAAAAabc123";
+const url = "http://gamf.nhely.hu/ajax1/";
+
+document.addEventListener("DOMContentLoaded", () => {
+    read();
+    document.getElementById("createEntry").addEventListener("click", create);
+});
 
 async function read() {
     let response = await fetch(url, {
-        method: 'post',
+        method: 'POST',
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: "code=" + code + "&op=read"
+        body: `code=${code}&op=read`
     });
-    let data = await response.text();
-    data = JSON.parse(data);
+    let data = await response.json();
     let list = data.list;
-    let str = "<h1>Read</h1>";
-    str += "<p>Number of records: " + data.rowCount + "</p>";
-    str += "<p>Last max " + data.maxNum + " records:</p>";
-    str += "<table><tr><th>ID</th><th>Value</th><th>Height</th><th>Actions</th></tr>";
-    for (let i = 0; i < list.length; i++) {
+    let str = `<h1>Read</h1><p>Number of records: ${data.rowCount}</p>`;
+    str += `<p>Last max ${data.maxNum} records:</p>`;
+    str += `<table><tr><th>ID</th><th>Value</th><th>Height</th><th>Actions</th></tr>`;
+    list.forEach(item => {
         str += `<tr>
-                    <td>${list[i].id}</td>
-                    <td contenteditable="true">${list[i].value}</td>
-                    <td contenteditable="true">${list[i].height}</td>
-                    <td><button onclick="updateData(${list[i].id})">Update</button>
-                        <button onclick="deleteData(${list[i].id})">Delete</button></td>
+                    <td>${item.id}</td>
+                    <td contenteditable="true">${item.value}</td>
+                    <td contenteditable="true">${item.height}</td>
+                    <td>
+                        <button onclick="updateData(${item.id}, this)">Update</button>
+                        <button onclick="deleteData(${item.id})">Delete</button>
+                    </td>
                 </tr>`;
-    }
-    str += "</table>";
+    });
+    str += `</table>`;
     document.getElementById("readDiv").innerHTML = str;
 }
 
 async function create() {
-    value = document.getElementById("new-value").value;
-    height = document.getElementById("new-height").value;
+    let value = document.getElementById("new-value").value.trim();
+    let height = document.getElementById("new-height").value.trim();
     if (value.length > 0 && value.length <= 30 && height.length > 0) {
         let response = await fetch(url, {
-            method: 'post',
+            method: 'POST',
             cache: 'no-cache',
-            headers: { 
-                'Content-Type': 'application/x-www-form-urlencoded' 
-            },
-            body: "&op=create&value="+value+"&height="+height
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `code=${code}&op=create&value=${value}&height=${height}`
         });
         let data = await response.text();
-        if (data>0) {
-            str="Create successfull."
-        }
-        else {
-            str="Create was NOT successfull."
-        }
-        document.getElementById("createResult").innerHTML=str;
-        document.getElementById("new-value").value="";
-        document.getElementById("new-height").value="";
+        document.getElementById("createResult").innerHTML = data > 0 ? "Create successful." : "Create was NOT successful.";
+        document.getElementById("new-value").value = "";
+        document.getElementById("new-height").value = "";
         read();
     } else {
         document.getElementById("createResult").innerHTML = "Validation error!!";
     }
 }
-async function getDataForId() {
-    let response = await fetch(url, {
-        method: 'post',
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: "code="+code+"&op=read"
-    });
-    let data = await response.text();
-    data = JSON.parse(data);
-    let list = data.list;
-    for(let i=0; i<list.length; i++)
-      if(list[i].id==document.getElementById("idUpd").value){
-        document.getElementById("name2").value=list[i].name;
-        document.getElementById("city2").value=list[i].city;
-        document.getElementById("phone2").value=list[i].phone;
-      }
-  }
 
-async function updateData(id) {
-    let row = event.target.parentElement.parentElement;
-    let value = row.children[1].innerText;
-    let height = row.children[2].innerText;
+async function updateData(id, button) {
+    let row = button.closest("tr");
+    let value = row.children[1].innerText.trim();
+    let height = row.children[2].innerText.trim();
     if (value.length > 0 && value.length <= 30 && height.length > 0) {
         let response = await fetch(url, {
-            method: 'post',
+            method: 'POST',
             cache: 'no-cache',
-            headers: { 
-                'Content-Type': 'application/x-www-form-urlencoded' 
-            },
-            body: "code="+code+"&op=update&id="+id+"&value="+value+"height="+height
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `code=${code}&op=update&id=${id}&value=${value}&height=${height}`
         });
         let data = await response.text();
         document.getElementById("updateResult").innerHTML = data > 0 ? "Update successful!" : "Update NOT successful!";
@@ -98,7 +74,7 @@ async function updateData(id) {
 
 async function deleteData(id) {
     let response = await fetch(url, {
-        method: 'post',
+        method: 'POST',
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: `code=${code}&op=delete&id=${id}`
@@ -108,9 +84,18 @@ async function deleteData(id) {
     read();
 }
 
-window.onload = function () {
-    read();
-};
-
-const createButton = document.getElementById("createEntry");
-createButton.addEventListener("click", create);
+async function getDataForId() {
+    let id = document.getElementById("idUpd").value.trim();
+    let response = await fetch(url, {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `code=${code}&op=read`
+    });
+    let data = await response.json();
+    let item = data.list.find(entry => entry.id == id);
+    if (item) {
+        document.getElementById("new-value").value = item.value;
+        document.getElementById("new-height").value = item.height;
+    }
+}
