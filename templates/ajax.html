@@ -3,74 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajax Table</title>
+    <title>AJAX CRUD</title>
     <script src="scripts/ajax.js" defer></script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        input[type="text"], input[type="number"] {
-            padding: 5px;
-            width: 200px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 5px 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="/templates/style/ajax.css">
 </head>
 <body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
     <nav>
         <ul>
             <li><a href="index.html">Főoldal</a></li>
             <li><a href="table.html">Táblázat</a></li>
             <li><a href="html5.html">HTML5</a></li>
             <li><a href="chart.html">Chart</a></li>
-            <li><a href="ajax.html">Ajax</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+            <li><a href="ajax.html" class="active">Ajax</a></li>
         </ul>
     </nav>
-    
+    <h1>AJAX CRUD</h1>
     <div id="readDiv"></div>
+    <h2>Height Statisztika</h2>
+    <p id="heightStats"></p>
     
-    <h1>Create</h1>
-    <div id="createDiv">
-        <h2>Create New Record</h2>
-        <label for="new-value">Value:</label>
-        <input type="text" id="new-value" maxlength="30"><br>
-        <label for="new-height">Height:</label>
-        <input type="number" id="new-height"><br>
-        <button id="createEntry">Create</button>
-        <p id="createResult"></p>
-    </div>
-
-    <h1>Update</h1>
-    <div id="updateDiv">
-        <h2>Update Record</h2>
-        <label for="idUpd">ID (required):</label>
-        <input type="text" id="idUpd"><br>
-        <button onclick="getDataForId();">Get Data</button><br>
-        <label for="value">Value (max 30):</label>
-        <input type="text" id="value"><br>
-        <label for="height">Height:</label>
-        <input type="text" id="height"><br>
-        <button onclick="update();">Update</button>
-        <p id="updateResult"></p>
-    </div>
-
-    <h1>Delete</h1>
-    <div id="deleteDiv">
-        <h2>Delete Result</h2>
-        <p id="deleteResult"></p>
-    </div>
+    <h2>Új Rekord</h2>
+    <input type="text" id="new-name" placeholder="Név (max 30 karakter)" maxlength="30">
+    <input type="text" id="new-height" placeholder="Magasság">
+    <input type="text" id="new-weight" placeholder="Súly">
+    <button id="createEntry">Létrehozás</button>
+    <p id="createResult"></p>
+    
+    <h2>Módosítás</h2>
+    <input type="text" id="idUpd" placeholder="ID">
+    <button id="getDataForId">Adatok Lekérése</button>
+    <input type="text" id="upd-name" placeholder="Név (max 30 karakter)" maxlength="30">
+    <input type="text" id="upd-height" placeholder="Magasság">
+    <input type="text" id="upd-weight" placeholder="Súly">
+    <button id="updateEntry">Módosítás</button>
+    <p id="updateResult"></p>
+    
+    <h2>Törlés</h2>
+    <input type="text" id="deleteId" placeholder="ID">
+    <button id="deleteEntry">Törlés</button>
+    <p id="deleteResult"></p>
 </body>
 </html>
