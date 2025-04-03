@@ -5,7 +5,7 @@ function drawChart(row) {
     const values = Array.from(row.children).slice(1).map(td => Number(td.textContent));
 
     const ctx = document.getElementById('chartCanvas').getContext('2d');
-    
+
     if (chartInstance) {
         chartInstance.destroy();
     }
@@ -24,3 +24,9 @@ function drawChart(row) {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const firstRow = document.querySelector("tbody tr");
+    if (firstRow) {
+        drawChart(firstRow);
+    }
+});

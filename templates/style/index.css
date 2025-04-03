@@ -42,7 +42,7 @@ nav ul li a.active {
     border-radius: 5px;
 }
 
-.content {
+main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;

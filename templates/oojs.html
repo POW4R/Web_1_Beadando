@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="hu">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OOJS</title>
-    <link rel="stylesheet" href="style/oojs.css">
+    <link rel="stylesheet" href="style/styles.css">
 </head>
- 
-<body>    
-    <h1>Web-programozás-1 Előadás Házi feladat</h1>
+
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
     <nav>
         <ul>
             <li><a href="index.html">Kezdőlap</a></li>
             <li><a href="table.html">Táblázat</a></li>
             <li><a href="html5.html">HTML5</a></li>
             <li><a href="chart.html">Chart</a></li>
-            <li><a href="oojs.html">OOJS</a></li>
+            <li><a href="oojs.html" class="active">OOJS</a></li>
             <li><a href="ajax.html">Ajax</a></li>
         </ul>
+    </nav>
+
+    <main id="main-container"></main>
+
     <script>
         class MenuItem {
             constructor(name, action) {
                 this.name = name;
                 this.action = action;
             }
- 
+
             render() {
                 const item = document.createElement("button");
                 item.textContent = this.name;
@@ -34,66 +40,69 @@
                 return item;
             }
         }
- 
+
         class Menu {
             constructor(title) {
                 this.title = title;
                 this.items = [];
             }
- 
+
             addItem(name, action) {
                 const menuItem = new MenuItem(name, action);
                 this.items.push(menuItem);
             }
- 
+
             render() {
                 const menuContainer = document.createElement("div");
                 menuContainer.style.border = "1px solid black";
                 menuContainer.style.padding = "10px";
                 menuContainer.style.width = "200px";
- 
+
                 const titleElement = document.createElement("h3");
                 titleElement.textContent = this.title;
                 menuContainer.appendChild(titleElement);
- 
+
                 this.items.forEach(item => {
                     menuContainer.appendChild(item.render());
                 });
- 
-                document.body.appendChild(menuContainer);
+
+                document.getElementById("main-container").appendChild(menuContainer);
             }
         }
- 
+
         class DropdownMenu extends Menu {
             constructor(title) {
                 super(title);
             }
- 
             render() {
                 const dropdown = document.createElement("select");
- 
                 this.items.forEach(item => {
                     const option = document.createElement("option");
                     option.textContent = item.name;
                     option.onclick = item.action;
                     dropdown.appendChild(option);
                 });
- 
-                document.body.appendChild(dropdown);
+
+                document.getElementById("main-container").appendChild(dropdown);
             }
         }
- 
+
         // Példa használatra
         const mainMenu = new Menu("Főmenü");
         mainMenu.addItem("Gomb 1", () => alert("Gomb 1 megnyomva!"));
         mainMenu.addItem("Gomb 2", () => alert("Gomb 2 megnyomva!"));
         mainMenu.render();
- 
+
         const dropdown = new DropdownMenu("Lenyíló menü");
         dropdown.addItem("Elem 1", () => alert("Elem 1 kiválasztva!"));
         dropdown.addItem("Elem 2", () => alert("Elem 2 kiválasztva!"));
         dropdown.render();
     </script>
+
+    <footer>
+        <p>Neptun kód 1: VBVYRO</p>
+        <p>Neptun kód 2: LZJIAQ</p>
+    </footer>
 </body>
- 
+
 </html>

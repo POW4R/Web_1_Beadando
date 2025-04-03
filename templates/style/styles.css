@@ -1,0 +1,166 @@
+/*Default settings*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif, Courier, monospace;
+}
+
+/*Header*/
+header h1 {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/*Navigation*/
+nav {
+    background-color: #005bb5;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background 0.3s;
+    line-height: 20px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #003d80;
+    border-radius: 5px;
+}
+
+/*Main content*/
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/*Elements formatting*/
+section {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#dropZone {
+    width: 200px;
+    height: 100px;
+    border: 2px dashed #333;
+    line-height: 100px;
+    text-align: center;
+    margin: 20px auto;
+    background-color: #eee;
+}
+
+#dragItem {
+    width: 50px;
+    cursor: grab;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+svg {
+    display: block;
+    margin: 20px auto;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 5px;
+    width: 200px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*Table*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: white;
+
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #0073e6;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/*Footer*/
+footer {
+    text-align: center;
+    background-color: #0073e6;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 0;
+    line-height: 25px;
+}

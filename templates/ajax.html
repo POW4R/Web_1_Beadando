@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJAX CRUD</title>
     <script src="scripts/ajax.js" defer></script>
-    <link rel="stylesheet" href="/templates/style/ajax.css">
+    <link rel="stylesheet" href="style/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Web-programozás-1 Előadás Házi feladat</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="index.html">Kezdőlap</a></li>
             <li><a href="table.html">Táblázat</a></li>
             <li><a href="html5.html">HTML5</a></li>
             <li><a href="chart.html">Chart</a></li>
@@ -21,30 +23,38 @@
             <li><a href="ajax.html" class="active">Ajax</a></li>
         </ul>
     </nav>
-    <h1>AJAX CRUD</h1>
-    <div id="readDiv"></div>
-    <h2>Height Statisztika</h2>
-    <p id="heightStats"></p>
-    
-    <h2>Új Rekord</h2>
-    <input type="text" id="new-name" placeholder="Név (max 30 karakter)" maxlength="30">
-    <input type="text" id="new-height" placeholder="Magasság">
-    <input type="text" id="new-weight" placeholder="Súly">
-    <button id="createEntry">Létrehozás</button>
-    <p id="createResult"></p>
-    
-    <h2>Módosítás</h2>
-    <input type="text" id="idUpd" placeholder="ID">
-    <button id="getDataForId">Adatok Lekérése</button>
-    <input type="text" id="upd-name" placeholder="Név (max 30 karakter)" maxlength="30">
-    <input type="text" id="upd-height" placeholder="Magasság">
-    <input type="text" id="upd-weight" placeholder="Súly">
-    <button id="updateEntry">Módosítás</button>
-    <p id="updateResult"></p>
-    
-    <h2>Törlés</h2>
-    <input type="text" id="deleteId" placeholder="ID">
-    <button id="deleteEntry">Törlés</button>
-    <p id="deleteResult"></p>
+    <main>
+        <h1>AJAX CRUD</h1>
+        <div id="readDiv"></div>
+        <h2>Height Statisztika</h2>
+        <p id="heightStats"></p>
+
+        <h2>Új Rekord</h2>
+        <input type="text" id="new-name" placeholder="Név (max 30 karakter)" maxlength="30">
+        <input type="text" id="new-height" placeholder="Magasság">
+        <input type="text" id="new-weight" placeholder="Súly">
+        <button id="createEntry">Létrehozás</button>
+        <p id="createResult"></p>
+
+        <h2>Módosítás</h2>
+        <input type="text" id="idUpd" placeholder="ID">
+        <button id="getDataForId">Adatok Lekérése</button>
+        <input type="text" id="upd-name" placeholder="Név (max 30 karakter)" maxlength="30">
+        <input type="text" id="upd-height" placeholder="Magasság">
+        <input type="text" id="upd-weight" placeholder="Súly">
+        <button id="updateEntry">Módosítás</button>
+        <p id="updateResult"></p>
+
+        <h2>Törlés</h2>
+        <input type="text" id="deleteId" placeholder="ID">
+        <button id="deleteEntry">Törlés</button>
+        <p id="deleteResult"></p>
+    </main>
+
+    <footer>
+        <p>Neptun kód 1: VBVYRO</p>
+        <p>Neptun kód 2: LZJIAQ</p>
+    </footer>
 </body>
+
 </html>
