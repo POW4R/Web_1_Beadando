@@ -23,31 +23,31 @@
             <li><a href="ajax.html">Ajax</a></li>
         </ul>
     </nav>
+    <main>
+        <div class="container mt-5">
+            <h2 class="mb-4">CRUD Táblázat</h2>
+            <button class="btn btn-primary mb-3" onclick="addRow()">Új hozzáadása</button>
 
-    <div class="container mt-5">
-        <h2 class="mb-4">CRUD Táblázat</h2>
-        <button class="btn btn-primary mb-3" onclick="addRow()">Új hozzáadása</button>
+            <!-- Keresés mező és gomb egymás mellett -->
+            <div class="d-flex mb-2">
+                <input type="text" id="searchInput" placeholder="Keresés..." class="form-control me-2">
+                <button onclick="searchTable()" class="btn btn-primary">Keresés</button>
+            </div>
 
-        <!-- Keresés mező és gomb egymás mellett -->
-        <div class="d-flex mb-2">
-            <input type="text" id="searchInput" placeholder="Keresés..." class="form-control me-2">
-            <button onclick="searchTable()" class="btn btn-primary">Keresés</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Név</th>
+                        <th>Email</th>
+                        <th>Műveletek</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
         </div>
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Név</th>
-                    <th>Email</th>
-                    <th>Műveletek</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-        </table>
-    </div>
-
+    </main>
     <footer>
         <p>Neptun kód 1: VBVYRO</p>
         <p>Neptun kód 2: LZJIAQ</p>
