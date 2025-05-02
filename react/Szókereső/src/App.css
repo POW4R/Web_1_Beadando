@@ -1,0 +1,95 @@
+/* Alap stílus a teljes oldalra */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+
+  /* Teljes magasságú és középre igazítás */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Középre igazított tartalom */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Címsor (Pontszám) */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Rács elrendezés */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 2.5rem);
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Egy cella a rácsban */
+.grid-cell {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Talált betűk kiemelése */
+.grid-cell.found {
+  background-color: #b7e7b7; /* halványzöld */
+  color: #000;
+}
+
+/* Keresőmező + gomb */
+input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  width: 200px;
+  margin-right: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Megtalált szavak listája */
+.found-words {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.found-words ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
